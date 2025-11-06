@@ -2,7 +2,37 @@
 
 Agente médico inteligente desplegado en AWS Bedrock Agent Core, con capacidades de consulta a Knowledge Base, acceso a expedientes de pacientes y análisis de imágenes médicas.
 
-## 🏗️ Arquitectura
+## 🔗 Repositorios Relacionados
+
+- **Frontend**: [agente-medico-frontend](https://github.com/nelsonApraez/agente-medico-frontend.git) - Aplicación React desplegada en AWS Amplify
+
+## 🏗️ Arquitectura Completa
+
+```
+Usuario (Navegador)
+    ↓
+React App (AWS Amplify)
+    ↓
+Lambda Function URL
+    ↓
+AWS Lambda (Proxy)
+    ↓
+AWS Bedrock Agent Core (Agente)
+    ↓
+Herramientas:
+  - AWS Bedrock Knowledge Base
+  - Expedientes de Pacientes
+  - Análisis de Imágenes
+```
+
+**Flujo de datos:**
+1. El usuario interactúa con la interfaz React hospedada en AWS Amplify
+2. El frontend envía peticiones a una Lambda Function URL
+3. AWS Lambda actúa como proxy y reenvía la petición al agente en Bedrock Agent Core
+4. El agente procesa la consulta usando Claude 3.5 Sonnet y ejecuta las herramientas necesarias
+5. La respuesta se devuelve al usuario a través de la misma cadena
+
+## 🏗️ Arquitectura del Backend
 
 - **Framework**: Strands AI Agents
 - **Modelo**: Claude 3.5 Sonnet (Cross-region Inference Profile)
